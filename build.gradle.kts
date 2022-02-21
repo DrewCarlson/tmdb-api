@@ -15,17 +15,24 @@ buildscript {
     }
 }
 
-group = "app.moviebase"
+group = "org.drewcarlson"
 version = Versions.versionName
 
+System.getenv("GITHUB_REF")?.let { ref ->
+    if (ref.startsWith("refs/tags/v")) {
+        version = ref.substringAfterLast("refs/tags/v")
+    }
+}
+
 nexusPublishing {
+    val sonatypeUsername: String? by project
+    val sonatypePassword: String? by project
     repositories {
         sonatype {
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            username.set(findProperty("SONATYPE_USER") as String?)
-            password.set(findProperty("SONATYPE_PASSWORD") as String?)
-            stagingProfileId.set(findProperty("SONATYPE_STAGING_PROFILE_ID_MOVIEBASE") as String?)
+            username.set(sonatypeUsername)
+            password.set(sonatypePassword)
         }
     }
 }

@@ -9,7 +9,7 @@ plugins {
 //    id(Plugins.swiftpackage) version Versions.swiftpackage
 }
 
-group = "app.moviebase"
+group = "org.drewcarlson"
 version = Versions.versionName
 
 kotlin {
@@ -115,6 +115,9 @@ val javadocJar by tasks.registering(Jar::class) {
 }
 
 afterEvaluate {
+    val signingKey: String? by project
+    val signingPassword: String? by project
+
     extensions.findByType<PublishingExtension>()?.apply {
         publications.withType<MavenPublication>().configureEach {
             artifact(javadocJar.get())
@@ -150,6 +153,8 @@ afterEvaluate {
         }
     }
     signing {
+        isRequired = !version.toString().endsWith("SNAPSHOT")
+        useInMemoryPgpKeys(signingKey, signingPassword)
         sign(publishing.publications)
     }
 }
