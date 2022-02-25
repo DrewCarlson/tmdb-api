@@ -123,7 +123,10 @@ enum class TmdbVideoType(val value: String) {
     OPENING_CREDITS("Opening Credits"),
 
     @SerialName("Behind the Scenes")
-    BEHIND_THE_SCENES("Behind the Scenes");
+    BEHIND_THE_SCENES("Behind the Scenes"),
+
+    @SerialName("Video")
+    VIDEO("video");
 }
 
 @Serializable
