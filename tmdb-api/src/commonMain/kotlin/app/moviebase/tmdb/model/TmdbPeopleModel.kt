@@ -138,7 +138,7 @@ data class TmdbCast(
     @SerialName("popularity") override val popularity: Float, // has e. g. 2.32
     @SerialName("profile_path") override val profilePath: String? = null,
     @SerialName("cast_id") val castId: Int? = null,
-    @SerialName("character") val character: String,
+    @SerialName("character") val character: String? = null,
     @SerialName("credit_id") val creditId: String,
     @SerialName("order") val order: Int,
 ): TmdbAnyPerson
@@ -176,7 +176,7 @@ data class TmdbAggregateCrew(
 @Serializable
 data class TmdbRole(
     @SerialName("credit_id") val creditId: String,
-    @SerialName("character") val character: String,
+    @SerialName("character") val character: String? = null,
     @SerialName("episode_count") val episodeCount: Int,
 )
 
@@ -251,7 +251,7 @@ sealed class TmdbPersonCredit : TmdbAnyMedia, TmdbBackdropMedia, TmdbPosterMedia
             @SerialName("vote_average") override val voteAverage: Float,
             @SerialName("vote_count") override val voteCount: Int,
 
-            @SerialName("character") val character: String,
+            @SerialName("character") val character: String? = null,
             @SerialName("credit_id") val creditId: String,
             @SerialName("order") val order: Int? = null,
         ) : TmdbPersonCredit.Movie()
@@ -303,7 +303,7 @@ sealed class TmdbPersonCredit : TmdbAnyMedia, TmdbBackdropMedia, TmdbPosterMedia
             @SerialName("name") override val name: String,
             @SerialName("original_name") override val originalName: String,
 
-            @SerialName("character") val character: String,
+            @SerialName("character") val character: String? = null,
             @SerialName("credit_id") val creditId: String,
             @SerialName("order") val order: Int? = null,
         ) : TmdbPersonCredit.Show()
