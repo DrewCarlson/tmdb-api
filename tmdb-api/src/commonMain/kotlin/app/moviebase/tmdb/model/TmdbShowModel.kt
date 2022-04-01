@@ -112,6 +112,7 @@ data class TmdbSeason(
     @SerialName("poster_path") override val posterPath: String?,
     @SerialName("season_number") val seasonNumber: Int,
     val episodes: List<TmdbEpisode>? = null,
+    @SerialName("overview") val overview: String? = null,
 ) : TmdbAnyMedia, TmdbPosterMedia {
 
     val numberOfEpisodes get() = episodeCount ?: episodes?.size ?: 0
@@ -146,6 +147,7 @@ data class TmdbEpisode(
     @SerialName("vote_average") val voteAverage: Float? = null,
     @SerialName("vote_count") val voteCount: Int? = null,
     @SerialName("still_path") val stillPath: String? = null,
+    @SerialName("overview") val overview: String? = null,
 ) : TmdbAnyMedia, TmdbBackdropMedia {
 
     override val backdropPath: String? get() = stillPath
