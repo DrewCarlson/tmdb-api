@@ -53,6 +53,9 @@ enum class TmdbShowType(val value: String) {
     @SerialName("Show")
     SHOW("Show"),
 
+    @SerialName("Video")
+    VIDEO("Video"),
+
     @SerialName("Miniseries")
     MINISERIES("Miniseries");
 
@@ -74,8 +77,8 @@ data class TmdbShowDetail(
     @SerialName("genres") val genres: List<TmdbGenre>,
     @SerialName("last_episode_to_air") val lastEpisodeToAir: TmdbEpisode? = null,
     @SerialName("next_episode_to_air") val nextEpisodeToAir: TmdbEpisode? = null,
-    @SerialName("number_of_episodes") val numberOfEpisodes: Int,
-    @SerialName("number_of_seasons") val numberOfSeasons: Int,
+    @SerialName("number_of_episodes") val numberOfEpisodes: Int?,
+    @SerialName("number_of_seasons") val numberOfSeasons: Int?,
     @SerialName("episode_run_time") val episodeRuntime: List<Int>,
     @SerialName("production_companies") val productionCompanies: List<TmdbCompany>? = null,
     val homepage: String? = null,
