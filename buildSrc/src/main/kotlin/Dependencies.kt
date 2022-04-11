@@ -12,14 +12,14 @@ object Versions {
     val swiftpackage = "2.0.3"
 
     // Kotlin
-    val kotlin = "1.6.10"
+    val kotlin = "1.6.20"
     val coroutines = "1.6.0"
     val kotlinxDatetime = "0.3.1"
     val serialization = "1.3.2"
     val kotlinIo = "0.1.16"
 
     // Data
-    val ktor = "2.0.0-beta-1"
+    val ktor = "2.0.0"
 
     // Testing
     val junitJupiter = "5.8.0-RC1"
